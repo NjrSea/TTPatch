@@ -395,13 +395,15 @@ class TTEdgeInsets {
     }; // native call js
     // Oc 消息转发至 js
 
-
+    // 全局的方法
     global.js_msgSend = function (instance, className, method, isInstance) {
         //当前方法显示参数长度，解析 params 时使用
         let funcTargetActionLength = 4; // retain self
-
+        // 构造JSObject, instance是native对象
         let curSelf = new JSObject(className, instance);
+        // 标记这个curSelf
         curSelf.__instanceFlag = className + '-' + method;
+        //
         pv_retainJsObject(curSelf);
         let params;
 

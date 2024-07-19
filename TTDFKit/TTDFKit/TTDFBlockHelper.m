@@ -107,6 +107,7 @@ static void blockIMP(ffi_cif *cif, void *ret, void **args, void *userdata) {
 }
 
 - (void)dealloc {
+    // 少了个Block_release？？？
     ffi_closure_free(_closure);
     free(_args);
     free(_cifPtr);
